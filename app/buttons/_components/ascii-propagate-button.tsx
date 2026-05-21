@@ -6,8 +6,8 @@ import { useGSAP } from "@gsap/react";
 import { BUTTON_CLASSES, CHAR_CLASSES, CHAR_WIDTH } from "./button-shell";
 
 const GRADIENT = ["█", "▓", "▒", "░"];
-const STEP_DURATION = 0.05;
-const STAGGER = 0.04;
+const STEP_DURATION = 0.075;
+const STAGGER = 0.03;
 
 export function AsciiPropagateButton({ label }: { label: string }) {
   const btnRef = useRef<HTMLButtonElement>(null);

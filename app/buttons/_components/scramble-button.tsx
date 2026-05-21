@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { BUTTON_CLASSES, CHAR_CLASSES, CHAR_WIDTH } from "./button-shell";
 
 const SYMBOLS = "!@#$%^&*()_+-=[]{}<>?/\\|~";
-const SCRAMBLE_DURATION = 0.2;
+const SCRAMBLE_DURATION = 0.3;
 const SWAP_INTERVAL = 0.01;
 
 function randSymbol() {

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "./theme-toggle";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 
 const sections = [
   {
@@ -28,11 +30,9 @@ export function Sidebar() {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label="Toggle menu"
-        className="md:hidden fixed top-3 left-3 z-50 cursor-pointer rounded border border-foreground/20 bg-background p-2 font-(family-name:--font-ubuntu-mono)"
+        className="md:hidden fixed top-3 left-3 z-50 cursor-pointer rounded border border-foreground/20 bg-background p-2"
       >
-        <span className="block w-5 h-px bg-foreground mb-1" />
-        <span className="block w-5 h-px bg-foreground mb-1" />
-        <span className="block w-5 h-px bg-foreground" />
+        {open ? <IconX size={18} stroke={1.5} /> : <IconMenu2 size={18} stroke={1.5} />}
       </button>
 
       {open && (
@@ -50,6 +50,7 @@ export function Sidebar() {
           border-r border-foreground/10 bg-background p-6
           font-(family-name:--font-ubuntu-mono)
           transition-transform duration-200
+          flex flex-col
           ${open ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0
         `}
@@ -86,6 +87,9 @@ export function Sidebar() {
             </div>
           ))}
         </nav>
+        <div className="mt-auto pt-6">
+          <ThemeToggle />
+        </div>
       </aside>
     </>
   );
