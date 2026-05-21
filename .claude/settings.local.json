@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "vercel",
+    "code-review-graph"
+  ]
+}
