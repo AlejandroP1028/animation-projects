@@ -12,6 +12,7 @@ const sections = [
     items: [
       { href: "/buttons", label: "Buttons" },
       { href: "/page-transitions", label: "Page Transitions" },
+      { href: "/pretext", label: "Pretext" },
     ],
   },
 ];

@@ -8,11 +8,20 @@ type Demo = {
 
 const CELLS = 16;
 
-export function DemoGrid({ title, demos }: { title: string; demos: Demo[] }) {
+export function DemoGrid({
+  title,
+  demos,
+  tabs,
+}: {
+  title: string;
+  demos: Demo[];
+  tabs?: ReactNode;
+}) {
   return (
     <main className="flex flex-1 flex-col font-(family-name:--font-ubuntu-mono)">
-      <header className="border-b border-foreground/10 px-6 py-4 pl-16 md:pl-6">
+      <header className="border-b border-foreground/10 px-6 py-4 pl-16 md:pl-6 flex items-center justify-between gap-4">
         <h1 className="text-2xl font-bold">{title}</h1>
+        {tabs}
       </header>
       <div className="relative flex-1 overflow-hidden">
         <div className="grid h-full grid-cols-2 grid-rows-8 md:grid-cols-4 md:grid-rows-4 -mr-px -mb-px">
