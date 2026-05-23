@@ -14,6 +14,8 @@ const RIPPLE_FREQ = 4.1;
 const STEPS = 48;
 const RISE_DURATION = 1.2;
 const WAVE_PERIOD = 1.4;
+const FONT_STACK =
+  "var(--font-ubuntu-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
 
 function buildWave(p: number, phase: number): string {
   const startBelow = H + AMP + RIPPLE_AMP + 12;
@@ -39,6 +41,7 @@ export function WaterRiseButton({ label }: { label: string }) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const fillRef = useRef<SVGPathElement>(null);
   const clipRef = useRef<SVGPathElement>(null);
+  const invertedTextRef = useRef<SVGTextElement>(null);
   const riseRef = useRef<gsap.core.Tween | null>(null);
   const phaseRef = useRef<gsap.core.Tween | null>(null);
   const reactId = useId();
@@ -49,13 +52,15 @@ export function WaterRiseButton({ label }: { label: string }) {
       const btn = btnRef.current;
       const fill = fillRef.current;
       const clip = clipRef.current;
-      if (!btn || !fill || !clip) return;
+      const inverted = invertedTextRef.current;
+      if (!btn || !fill || !clip || !inverted) return;
 
       const state = { p: 0, phase: 0 };
       const apply = () => {
         const d = buildWave(state.p, state.phase);
         fill.setAttribute("d", d);
         clip.setAttribute("d", d);
+        inverted.setAttribute("clip-path", `url(#${clipId})`);
       };
       apply();
 
@@ -87,7 +92,7 @@ export function WaterRiseButton({ label }: { label: string }) {
         riseRef.current?.kill();
       };
     },
-    { scope: btnRef },
+    { scope: btnRef, dependencies: [clipId] },
   );
 
   const initialD = buildWave(0, 0);
@@ -110,25 +115,38 @@ export function WaterRiseButton({ label }: { label: string }) {
             <path ref={clipRef} d={initialD} />
           </clipPath>
         </defs>
-        <path ref={fillRef} d={initialD} fill="var(--foreground)" />
+        <path
+          ref={fillRef}
+          d={initialD}
+          style={{ fill: "var(--foreground)" }}
+        />
         <text
           x="50%"
           y="50%"
+          dy=".35em"
           textAnchor="middle"
-          dominantBaseline="central"
-          fill="var(--foreground)"
-          style={{ fontFamily: "inherit", fontSize: 16, fontWeight: 500 }}
+          style={{
+            fill: "var(--foreground)",
+            fontFamily: FONT_STACK,
+            fontSize: 16,
+            fontWeight: 500,
+          }}
         >
           {label}
         </text>
         <text
+          ref={invertedTextRef}
           x="50%"
           y="50%"
+          dy=".35em"
           textAnchor="middle"
-          dominantBaseline="central"
-          fill="var(--background)"
           clipPath={`url(#${clipId})`}
-          style={{ fontFamily: "inherit", fontSize: 16, fontWeight: 500 }}
+          style={{
+            fill: "var(--background)",
+            fontFamily: FONT_STACK,
+            fontSize: 16,
+            fontWeight: 500,
+          }}
         >
           {label}
         </text>

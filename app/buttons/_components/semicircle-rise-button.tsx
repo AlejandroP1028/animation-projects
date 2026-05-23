@@ -11,6 +11,8 @@ const PADDING = 80;
 const TY_START = H + DOME_MAX + 6;
 const TY_END = 0;
 const DURATION = 0.45;
+const FONT_STACK =
+  "var(--font-ubuntu-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
 
 function buildPath(ty: number, dome: number): string {
   const peakY = ty - dome;
@@ -23,6 +25,7 @@ export function SemicircleRiseButton({ label }: { label: string }) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const fillRef = useRef<SVGPathElement>(null);
   const clipRef = useRef<SVGPathElement>(null);
+  const invertedTextRef = useRef<SVGTextElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const reactId = useId();
   const clipId = `clip-${reactId.replace(/:/g, "")}`;
@@ -32,7 +35,8 @@ export function SemicircleRiseButton({ label }: { label: string }) {
       const btn = btnRef.current;
       const fill = fillRef.current;
       const clip = clipRef.current;
-      if (!btn || !fill || !clip) return;
+      const inverted = invertedTextRef.current;
+      if (!btn || !fill || !clip || !inverted) return;
 
       const state = { p: 0 };
       const applyD = () => {
@@ -41,6 +45,7 @@ export function SemicircleRiseButton({ label }: { label: string }) {
         const d = buildPath(ty, dome);
         fill.setAttribute("d", d);
         clip.setAttribute("d", d);
+        inverted.setAttribute("clip-path", `url(#${clipId})`);
       };
       applyD();
 
@@ -63,7 +68,7 @@ export function SemicircleRiseButton({ label }: { label: string }) {
         tl.kill();
       };
     },
-    { scope: btnRef },
+    { scope: btnRef, dependencies: [clipId] },
   );
 
   const initialD = buildPath(TY_START, DOME_MAX);
@@ -86,25 +91,38 @@ export function SemicircleRiseButton({ label }: { label: string }) {
             <path ref={clipRef} d={initialD} />
           </clipPath>
         </defs>
-        <path ref={fillRef} d={initialD} fill="var(--foreground)" />
+        <path
+          ref={fillRef}
+          d={initialD}
+          style={{ fill: "var(--foreground)" }}
+        />
         <text
           x="50%"
           y="50%"
+          dy=".35em"
           textAnchor="middle"
-          dominantBaseline="central"
-          fill="var(--foreground)"
-          style={{ fontFamily: "inherit", fontSize: 16, fontWeight: 500 }}
+          style={{
+            fill: "var(--foreground)",
+            fontFamily: FONT_STACK,
+            fontSize: 16,
+            fontWeight: 500,
+          }}
         >
           {label}
         </text>
         <text
+          ref={invertedTextRef}
           x="50%"
           y="50%"
+          dy=".35em"
           textAnchor="middle"
-          dominantBaseline="central"
-          fill="var(--background)"
           clipPath={`url(#${clipId})`}
-          style={{ fontFamily: "inherit", fontSize: 16, fontWeight: 500 }}
+          style={{
+            fill: "var(--background)",
+            fontFamily: FONT_STACK,
+            fontSize: 16,
+            fontWeight: 500,
+          }}
         >
           {label}
         </text>
