@@ -661,7 +661,7 @@ const COMBO: Record<Family, ComboMap> = {
   power2: { in: EXIT_DEFAULT, out: ENTRANCE_DEFAULT, inOut: MORPH_DEFAULT },
   power3: {
     in: ["modalClose", "drawerClose", "toastDismiss", "fadeOut"],
-    out: ["modalOpen", "drawerOpen", "toastAppear", "button"],
+    out: ["modalOpen", "drawerOpen", "toastAppear", "tabSwitch"],
     inOut: ["tabSwitch", "pageSwap", "modalMorph", "fadeCross"],
   },
   power4: {
@@ -670,19 +670,19 @@ const COMBO: Record<Family, ComboMap> = {
     inOut: ["pageSwap", "tabSwitch", "modalMorph", "fadeCross"],
   },
   back: {
-    in: ["badge", "modalClose", "drawerClose", "toastDismiss"],
+    in: ["accordion", "modalClose", "drawerClose", "toastDismiss"],
     out: ["badge", "modalOpen", "button", "toastAppear"],
-    inOut: ["modalMorph", "tabSwitch", "accordion", "fadeCross"],
+    inOut: ["modalMorph", "tabSwitch", "accordion", "pageSwap"],
   },
   elastic: {
-    in: ["badge", "shake", "modalClose", "toastDismiss"],
-    out: ["badge", "shake", "toastAppear", "button"],
-    inOut: ["shake", "accordion", "modalMorph", "tabSwitch"],
+    in: ["drawerClose", "pageSwap", "modalClose", "toastDismiss"],
+    out: ["badge", "modalOpen", "toastAppear", "button"],
+    inOut: ["parallax", "accordion", "modalMorph", "pageSwap"],
   },
   bounce: {
-    in: ["ballDrop", "shake", "drawerClose", "toastDismiss"],
-    out: ["ballDrop", "badge", "toastAppear", "shake"],
-    inOut: ["shake", "ballDrop", "accordion", "modalMorph"],
+    in: ["fadeOut", "modalClose", "accordion", "toastDismiss"],
+    out: ["ballDrop", "badge", "toastAppear", "accordion"],
+    inOut: ["parallax", "pageSwap", "accordion", "modalMorph"],
   },
   circ: {
     in: ["drawerClose", "modalClose", "toastDismiss", "fadeOut"],

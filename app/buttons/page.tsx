@@ -5,6 +5,7 @@ import { DemoGrid } from "../_components/demo-grid";
 import { ScrambleButton } from "./_components/scramble-button";
 import { AsciiPropagateButton } from "./_components/ascii-propagate-button";
 import { SplitRiseButton } from "./_components/split-rise-button";
+import { SemicircleRiseButton } from "./_components/semicircle-rise-button";
 
 const textDemos = [
   {
@@ -21,6 +22,11 @@ const textDemos = [
     id: "split-rise",
     label: "split rise on hover",
     node: <SplitRiseButton label="HOVER ME" />,
+  },
+  {
+    id: "semicircle-rise",
+    label: "semicircle rise on hover",
+    node: <SemicircleRiseButton label="HOVER ME" />,
   },
 ];
 
