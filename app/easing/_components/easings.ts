@@ -37,6 +37,8 @@ export interface PlaygroundState {
   steps: number;
   duration: number;
   paused: boolean;
+  loop: boolean;
+  playToken: number;
   customPath: string;
 }
 

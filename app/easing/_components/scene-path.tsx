@@ -1,18 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useSceneLoop } from "./use-scene-loop";
+import { useSceneLoop, type SceneProps } from "./use-scene-loop";
 import { SceneFrame } from "./scene-frame";
 
-interface Props {
-  ease: string;
-  duration: number;
-  paused: boolean;
-}
 
 const PATH_D = "M10,80 C40,10 80,10 110,80 S180,150 210,80";
 
-export function ScenePath(props: Props) {
+export function ScenePath(props: SceneProps) {
   const pathRef = useRef<SVGPathElement>(null);
   const [length, setLength] = useState(0);
 

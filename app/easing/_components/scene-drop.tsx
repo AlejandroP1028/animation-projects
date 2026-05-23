@@ -1,16 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { useSceneLoop } from "./use-scene-loop";
+import { useSceneLoop, type SceneProps } from "./use-scene-loop";
 import { SceneFrame } from "./scene-frame";
 
-interface Props {
-  ease: string;
-  duration: number;
-  paused: boolean;
-}
 
-export function SceneDrop(props: Props) {
+export function SceneDrop(props: SceneProps) {
   const dotRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const frameRef = useSceneLoop((tl) => {

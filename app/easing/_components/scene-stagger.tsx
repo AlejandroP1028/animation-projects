@@ -1,18 +1,13 @@
 "use client";
 
 import { useRef } from "react";
-import { useSceneLoop } from "./use-scene-loop";
+import { useSceneLoop, type SceneProps } from "./use-scene-loop";
 import { SceneFrame } from "./scene-frame";
 
-interface Props {
-  ease: string;
-  duration: number;
-  paused: boolean;
-}
 
 const COUNT = 5;
 
-export function SceneStagger(props: Props) {
+export function SceneStagger(props: SceneProps) {
   const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
   const frameRef = useSceneLoop((tl) => {
     const dots = dotsRef.current.filter(Boolean) as HTMLDivElement[];

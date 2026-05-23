@@ -1,16 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { useSceneLoop } from "./use-scene-loop";
+import { useSceneLoop, type SceneProps } from "./use-scene-loop";
 import { SceneFrame } from "./scene-frame";
 
-interface Props {
-  ease: string;
-  duration: number;
-  paused: boolean;
-}
 
-export function ScenePendulum(props: Props) {
+export function ScenePendulum(props: SceneProps) {
   const armRef = useRef<HTMLDivElement>(null);
   const frameRef = useSceneLoop((tl) => {
     const arm = armRef.current;

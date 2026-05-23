@@ -1,6 +1,11 @@
 "use client";
 
-import { IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
+import {
+  IconPlayerPause,
+  IconPlayerPlay,
+  IconRepeat,
+  IconRepeatOff,
+} from "@tabler/icons-react";
 import {
   FAMILIES,
   VARIANTLESS,
@@ -11,6 +16,7 @@ import {
 } from "./easings";
 import { CurveGraph } from "./curve-graph";
 import { CustomEasingEditor } from "./custom-easing-editor";
+import { EasingExamples } from "./easing-examples";
 
 interface Props {
   state: PlaygroundState;
@@ -112,17 +118,50 @@ export function Controls({ state, setState, ease }: Props) {
 
           <button
             type="button"
-            onClick={() => setState((s) => ({ ...s, paused: !s.paused }))}
-            className="flex cursor-pointer items-center gap-2 rounded border border-foreground/20 px-3 py-1.5 text-xs uppercase tracking-wider hover:bg-foreground/10"
-            aria-label={state.paused ? "Play" : "Pause"}
+            onClick={() => setState((s) => ({ ...s, loop: !s.loop }))}
+            className={`flex cursor-pointer items-center gap-2 rounded border px-3 py-1.5 text-xs uppercase tracking-wider transition-colors ${
+              state.loop
+                ? "border-foreground bg-foreground text-background"
+                : "border-foreground/20 hover:bg-foreground/10"
+            }`}
+            aria-pressed={state.loop}
+            title="Toggle looping"
           >
-            {state.paused ? (
-              <IconPlayerPlay size={14} stroke={1.5} />
+            {state.loop ? (
+              <IconRepeat size={14} stroke={1.5} />
             ) : (
-              <IconPlayerPause size={14} stroke={1.5} />
+              <IconRepeatOff size={14} stroke={1.5} />
             )}
-            {state.paused ? "play" : "pause"}
+            loop
           </button>
+
+          {state.loop ? (
+            <button
+              type="button"
+              onClick={() => setState((s) => ({ ...s, paused: !s.paused }))}
+              className="flex cursor-pointer items-center gap-2 rounded border border-foreground/20 px-3 py-1.5 text-xs uppercase tracking-wider hover:bg-foreground/10"
+              aria-label={state.paused ? "Play" : "Pause"}
+            >
+              {state.paused ? (
+                <IconPlayerPlay size={14} stroke={1.5} />
+              ) : (
+                <IconPlayerPause size={14} stroke={1.5} />
+              )}
+              {state.paused ? "play" : "pause"}
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() =>
+                setState((s) => ({ ...s, playToken: s.playToken + 1 }))
+              }
+              className="flex cursor-pointer items-center gap-2 rounded border border-foreground/20 px-3 py-1.5 text-xs uppercase tracking-wider hover:bg-foreground/10"
+              aria-label="Play once"
+            >
+              <IconPlayerPlay size={14} stroke={1.5} />
+              play once
+            </button>
+          )}
         </div>
       </div>
 
@@ -132,6 +171,16 @@ export function Controls({ state, setState, ease }: Props) {
           onChange={(customPath) => setState((s) => ({ ...s, customPath }))}
         />
       )}
+
+      <EasingExamples
+        family={state.family}
+        variant={state.variant}
+        ease={ease}
+        duration={state.duration}
+        paused={state.paused}
+        loop={state.loop}
+        playToken={state.playToken}
+      />
     </div>
   );
 }

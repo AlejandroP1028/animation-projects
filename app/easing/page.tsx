@@ -26,6 +26,8 @@ const INITIAL: PlaygroundState = {
   steps: 5,
   duration: 1.2,
   paused: false,
+  loop: true,
+  playToken: 0,
   customPath: DEFAULT_CUSTOM_PATH,
 };
 
@@ -37,6 +39,8 @@ export default function EasingPlaygroundPage() {
     ease,
     duration: state.duration,
     paused: state.paused,
+    loop: state.loop,
+    playToken: state.playToken,
   };
 
   return (
