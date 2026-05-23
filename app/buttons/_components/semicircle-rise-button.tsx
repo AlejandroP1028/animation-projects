@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -24,19 +24,15 @@ function buildPath(ty: number, dome: number): string {
 export function SemicircleRiseButton({ label }: { label: string }) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const fillRef = useRef<SVGPathElement>(null);
-  const clipRef = useRef<SVGPathElement>(null);
-  const invertedTextRef = useRef<SVGTextElement>(null);
+  const invertedRef = useRef<HTMLSpanElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const reactId = useId();
-  const clipId = `clip-${reactId.replace(/:/g, "")}`;
 
   useGSAP(
     () => {
       const btn = btnRef.current;
       const fill = fillRef.current;
-      const clip = clipRef.current;
-      const inverted = invertedTextRef.current;
-      if (!btn || !fill || !clip || !inverted) return;
+      const inverted = invertedRef.current;
+      if (!btn || !fill || !inverted) return;
 
       const state = { p: 0 };
       const applyD = () => {
@@ -44,8 +40,9 @@ export function SemicircleRiseButton({ label }: { label: string }) {
         const dome = DOME_MAX * (1 - state.p);
         const d = buildPath(ty, dome);
         fill.setAttribute("d", d);
-        clip.setAttribute("d", d);
-        inverted.setAttribute("clip-path", `url(#${clipId})`);
+        const cp = `path("${d}")`;
+        inverted.style.clipPath = cp;
+        inverted.style.setProperty("-webkit-clip-path", cp);
       };
       applyD();
 
@@ -68,7 +65,7 @@ export function SemicircleRiseButton({ label }: { label: string }) {
         tl.kill();
       };
     },
-    { scope: btnRef, dependencies: [clipId] },
+    { scope: btnRef },
   );
 
   const initialD = buildPath(TY_START, DOME_MAX);
@@ -84,49 +81,29 @@ export function SemicircleRiseButton({ label }: { label: string }) {
         width={W}
         height={H}
         viewBox={`0 0 ${W} ${H}`}
-        className="absolute inset-0"
+        className="pointer-events-none absolute inset-0 text-foreground"
       >
-        <defs>
-          <clipPath id={clipId}>
-            <path ref={clipRef} d={initialD} />
-          </clipPath>
-        </defs>
-        <path
-          ref={fillRef}
-          d={initialD}
-          style={{ fill: "var(--foreground)" }}
-        />
-        <text
-          x="50%"
-          y="50%"
-          dy=".35em"
-          textAnchor="middle"
-          style={{
-            fill: "var(--foreground)",
-            fontFamily: FONT_STACK,
-            fontSize: 16,
-            fontWeight: 500,
-          }}
-        >
-          {label}
-        </text>
-        <text
-          ref={invertedTextRef}
-          x="50%"
-          y="50%"
-          dy=".35em"
-          textAnchor="middle"
-          clipPath={`url(#${clipId})`}
-          style={{
-            fill: "var(--background)",
-            fontFamily: FONT_STACK,
-            fontSize: 16,
-            fontWeight: 500,
-          }}
-        >
-          {label}
-        </text>
+        <path ref={fillRef} d={initialD} fill="currentColor" />
       </svg>
+      <span
+        className="pointer-events-none absolute inset-0 flex select-none items-center justify-center text-base font-medium text-foreground"
+        style={{ fontFamily: FONT_STACK }}
+        aria-hidden="true"
+      >
+        {label}
+      </span>
+      <span
+        ref={invertedRef}
+        className="pointer-events-none absolute inset-0 flex select-none items-center justify-center text-base font-medium text-background"
+        style={{
+          fontFamily: FONT_STACK,
+          clipPath: `path("${initialD}")`,
+          WebkitClipPath: `path("${initialD}")`,
+        }}
+        aria-hidden="true"
+      >
+        {label}
+      </span>
     </button>
   );
 }
