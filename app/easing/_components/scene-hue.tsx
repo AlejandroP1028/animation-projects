@@ -1,0 +1,40 @@
+"use client";
+
+import { useRef } from "react";
+import { useSceneLoop } from "./use-scene-loop";
+import { SceneFrame } from "./scene-frame";
+
+interface Props {
+  ease: string;
+  duration: number;
+  paused: boolean;
+}
+
+export function SceneHue(props: Props) {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const frameRef = useSceneLoop((tl) => {
+    const box = boxRef.current;
+    if (!box) return;
+    const state = { h: 0 };
+    tl.fromTo(
+      state,
+      { h: 0 },
+      {
+        h: 360,
+        onUpdate: () => {
+          box.style.filter = `hue-rotate(${state.h}deg)`;
+        },
+      },
+    );
+  }, props);
+
+  return (
+    <SceneFrame label="hue shift" innerRef={frameRef}>
+      <div
+        ref={boxRef}
+        className="h-20 w-20"
+        style={{ backgroundColor: "#ff3366" }}
+      />
+    </SceneFrame>
+  );
+}

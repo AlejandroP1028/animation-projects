@@ -8,6 +8,10 @@ import { IconMenu2, IconX } from "@tabler/icons-react";
 
 const sections = [
   {
+    title: "Playgrounds",
+    items: [{ href: "/easing", label: "Easing Playground" }],
+  },
+  {
     title: "Animations",
     items: [
       { href: "/buttons", label: "Buttons" },
