@@ -6,6 +6,7 @@ import { ScrambleButton } from "./_components/scramble-button";
 import { AsciiPropagateButton } from "./_components/ascii-propagate-button";
 import { SplitRiseButton } from "./_components/split-rise-button";
 import { SemicircleRiseButton } from "./_components/semicircle-rise-button";
+import { WaterRiseButton } from "./_components/water-rise-button";
 
 const textDemos = [
   {
@@ -27,6 +28,11 @@ const textDemos = [
     id: "semicircle-rise",
     label: "semicircle rise on hover",
     node: <SemicircleRiseButton label="HOVER ME" />,
+  },
+  {
+    id: "water-rise",
+    label: "water rise on hover",
+    node: <WaterRiseButton label="HOVER ME" />,
   },
 ];
 
