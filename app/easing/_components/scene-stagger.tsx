@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -20,7 +20,7 @@ export function SceneStagger(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="stagger row" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <div className="flex items-center gap-3">
         {Array.from({ length: COUNT }).map((_, i) => (
           <div

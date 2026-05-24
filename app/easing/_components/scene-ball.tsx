@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -17,7 +17,7 @@ export function SceneBall(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="ball L→R" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <div ref={trackRef} className="relative h-2 w-full rounded bg-foreground/10">
         <div
           ref={dotRef}

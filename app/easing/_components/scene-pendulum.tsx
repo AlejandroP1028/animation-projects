@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -14,7 +14,7 @@ export function ScenePendulum(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="pendulum" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <div className="relative h-32 w-32">
         <div
           ref={armRef}

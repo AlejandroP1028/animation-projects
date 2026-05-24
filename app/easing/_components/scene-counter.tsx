@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -24,7 +24,7 @@ export function SceneCounter(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="counter 0→100" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <span
         ref={textRef}
         className="font-(family-name:--font-ubuntu-mono) text-5xl font-bold tabular-nums"

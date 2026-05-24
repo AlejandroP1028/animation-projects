@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -14,7 +14,7 @@ export function SceneBar(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="bar fill" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <div className="relative h-6 w-full rounded bg-foreground/10">
         <div
           ref={barRef}

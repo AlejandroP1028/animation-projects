@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -24,7 +24,7 @@ export function ScenePath(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="svg path draw" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <svg viewBox="0 0 220 160" className="h-full w-full">
         <path
           ref={pathRef}

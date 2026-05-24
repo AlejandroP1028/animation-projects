@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -24,7 +24,7 @@ export function SceneHue(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="hue shift" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <div
         ref={boxRef}
         className="h-20 w-20"

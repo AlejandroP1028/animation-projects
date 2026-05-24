@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -14,7 +14,7 @@ export function SceneScale(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="scale pulse" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <div ref={boxRef} className="h-24 w-24 bg-foreground" />
     </SceneFrame>
   );

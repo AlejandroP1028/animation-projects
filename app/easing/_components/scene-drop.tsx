@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -17,7 +17,7 @@ export function SceneDrop(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="vertical drop" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <div ref={trackRef} className="relative h-full w-2 rounded bg-foreground/10">
         <div
           ref={dotRef}

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -14,7 +14,7 @@ export function SceneCircle(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="point on circle" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <div className="relative h-28 w-28 rounded-full border border-dashed border-foreground/20">
         <div
           ref={armRef}

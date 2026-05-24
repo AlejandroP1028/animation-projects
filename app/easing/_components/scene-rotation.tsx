@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef } from "react";
 import { useSceneLoop, type SceneProps } from "./use-scene-loop";
@@ -14,7 +14,7 @@ export function SceneRotation(props: SceneProps) {
   }, props);
 
   return (
-    <SceneFrame label="rotation 360°" innerRef={frameRef}>
+    <SceneFrame innerRef={frameRef}>
       <div ref={boxRef} className="h-16 w-16 bg-foreground" />
     </SceneFrame>
   );
