@@ -4,6 +4,7 @@ import { useState } from "react";
 import { DemoGrid } from "../_components/demo-grid";
 import { BarReveal } from "./_components/bar-reveal";
 import { AsciiReveal } from "./_components/ascii-reveal";
+import { ScrambleReveal } from "./_components/scramble-reveal";
 import { useDebounced } from "../_components/use-debounced";
 
 function Lever({
@@ -69,6 +70,19 @@ export default function TextPage() {
       node: (
         <AsciiReveal
           id="ascii-reveal"
+          fontSize={dFontSize}
+          lineCount={dLineCount}
+          charCount={dCharCount}
+          customText={dCustomText}
+        />
+      ),
+    },
+    {
+      id: "scramble-reveal",
+      label: "scramble reveal",
+      node: (
+        <ScrambleReveal
+          id="scramble-reveal"
           fontSize={dFontSize}
           lineCount={dLineCount}
           charCount={dCharCount}
