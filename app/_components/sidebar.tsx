@@ -17,7 +17,6 @@ const sections = [
       { href: "/buttons", label: "Buttons" },
       { href: "/text", label: "Text" },
       { href: "/page-transitions", label: "Page Transitions" },
-      { href: "/pretext", label: "Pretext" },
     ],
   },
 ];
