@@ -7,6 +7,10 @@ import { AsciiPropagateButton } from "./_components/ascii-propagate-button";
 import { SplitRiseButton } from "./_components/split-rise-button";
 import { SemicircleRiseButton } from "./_components/semicircle-rise-button";
 import { WaterRiseButton } from "./_components/water-rise-button";
+import { SwapRiseButton } from "./_components/swap-rise-button";
+import { SwapFallButton } from "./_components/swap-fall-button";
+import { ArrowSlideButton } from "./_components/arrow-slide-button";
+import { ArrowFillSlideButton } from "./_components/arrow-fill-slide-button";
 
 const textDemos = [
   {
@@ -34,9 +38,30 @@ const textDemos = [
     label: "water rise on hover",
     node: <WaterRiseButton label="HOVER ME" />,
   },
+  {
+    id: "swap-rise",
+    label: "swap rise on hover",
+    node: <SwapRiseButton label="HOVER ME" />,
+  },
+  {
+    id: "swap-fall",
+    label: "swap fall on hover",
+    node: <SwapFallButton label="HOVER ME" />,
+  },
 ];
 
-const iconDemos: typeof textDemos = [];
+const iconDemos: typeof textDemos = [
+  {
+    id: "arrow-slide",
+    label: "arrow slide on hover",
+    node: <ArrowSlideButton />,
+  },
+  {
+    id: "arrow-fill-slide",
+    label: "arrow + bg slide on hover",
+    node: <ArrowFillSlideButton />,
+  },
+];
 
 const TABS = [
   { id: "text", label: "Text", demos: textDemos },

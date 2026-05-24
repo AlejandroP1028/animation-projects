@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { DemoGrid } from "../_components/demo-grid";
 import { BarReveal } from "./_components/bar-reveal";
-import { useDebounced } from "./_components/use-debounced";
+import { useDebounced } from "../_components/use-debounced";
 
 function Lever({
   label,

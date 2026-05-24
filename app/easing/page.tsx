@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useDebounced } from "../_components/use-debounced";
 import {
   DEFAULT_CUSTOM_PATH,
   buildEaseString,
@@ -33,7 +34,11 @@ const INITIAL: PlaygroundState = {
 
 export default function EasingPlaygroundPage() {
   const [state, setState] = useState<PlaygroundState>(INITIAL);
-  const ease = useMemo(() => buildEaseString(state), [state]);
+  const debouncedCustomPath = useDebounced(state.customPath, 200);
+  const ease = useMemo(
+    () => buildEaseString({ ...state, customPath: debouncedCustomPath }),
+    [state, debouncedCustomPath],
+  );
 
   const sceneProps = {
     ease,

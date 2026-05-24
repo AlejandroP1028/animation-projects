@@ -8,11 +8,13 @@ import { BUTTON_CLASSES, CHAR_CLASSES, CHAR_WIDTH } from "./button-shell";
 const GRADIENT = ["█", "▓", "▒", "░"];
 const STEP_DURATION = 0.075;
 const STAGGER = 0.03;
+const COOLDOWN_MS = 250;
 
 export function AsciiPropagateButton({ label }: { label: string }) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const playing = useRef(false);
+  const lastDoneRef = useRef(0);
 
   useGSAP(
     () => {
@@ -21,6 +23,7 @@ export function AsciiPropagateButton({ label }: { label: string }) {
 
       const onEnter = (e: PointerEvent) => {
         if (playing.current) return;
+        if (performance.now() - lastDoneRef.current < COOLDOWN_MS) return;
         playing.current = true;
 
         const rect = btn.getBoundingClientRect();
@@ -31,6 +34,7 @@ export function AsciiPropagateButton({ label }: { label: string }) {
         const master = gsap.timeline({
           onComplete: () => {
             playing.current = false;
+            lastDoneRef.current = performance.now();
           },
         });
 
