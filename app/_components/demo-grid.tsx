@@ -16,6 +16,7 @@ type Demo = {
   id: string;
   label: string;
   node: ReactNode;
+  controls?: ReactNode;
 };
 
 type Handlers = { play?: () => void; clear?: () => void };
@@ -124,6 +125,11 @@ export function DemoGrid({
                         )}
                         {demo.label}
                       </span>
+                      {demo.controls && (
+                        <span className="absolute bottom-2 right-2">
+                          {demo.controls}
+                        </span>
+                      )}
                     </>
                   ) : null}
                 </div>

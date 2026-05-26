@@ -11,7 +11,11 @@ gsap.registerPlugin(useGSAP);
 const DURATION = 0.45;
 const COOLDOWN_MS = 250;
 
-export function ArrowSlideButton() {
+export function ArrowSlideButton({
+  ease = "power3.inOut",
+}: {
+  ease?: string;
+} = {}) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const aRef = useRef<HTMLSpanElement>(null);
   const bRef = useRef<HTMLSpanElement>(null);
@@ -47,14 +51,14 @@ export function ArrowSlideButton() {
           xPercent: 200,
           autoAlpha: 0,
           duration: DURATION,
-          ease: "power3.in",
+          ease,
         }).to(
           b,
           {
             xPercent: 0,
             autoAlpha: 1,
             duration: DURATION,
-            ease: "power3.out",
+            ease,
           },
           DURATION * 0.4,
         );

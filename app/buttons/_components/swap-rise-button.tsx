@@ -13,9 +13,11 @@ const COOLDOWN_MS = 250;
 export function SwapRiseButton({
   label,
   altLabel,
+  ease = "power3.out",
 }: {
   label: string;
   altLabel?: string;
+  ease?: string;
 }) {
   const labels = [label, altLabel ?? label];
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -55,10 +57,10 @@ export function SwapRiseButton({
         tl.to(outgoing, {
           yPercent: -100,
           duration: DURATION,
-          ease: "power3.out",
+          ease,
         }).to(
           incoming,
-          { yPercent: 0, duration: DURATION, ease: "power3.out" },
+          { yPercent: 0, duration: DURATION, ease },
           0,
         );
       };

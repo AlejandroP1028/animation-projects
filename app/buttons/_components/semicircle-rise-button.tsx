@@ -21,7 +21,13 @@ function buildPath(ty: number, dome: number): string {
   } Z`;
 }
 
-export function SemicircleRiseButton({ label }: { label: string }) {
+export function SemicircleRiseButton({
+  label,
+  ease = "power3.out",
+}: {
+  label: string;
+  ease?: string;
+}) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const fillRef = useRef<SVGPathElement>(null);
   const invertedRef = useRef<HTMLSpanElement>(null);
@@ -50,7 +56,7 @@ export function SemicircleRiseButton({ label }: { label: string }) {
       tl.to(state, {
         p: 1,
         duration: DURATION,
-        ease: "power3.out",
+        ease,
         onUpdate: applyD,
       });
       tlRef.current = tl;

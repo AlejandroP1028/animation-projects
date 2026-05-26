@@ -9,7 +9,11 @@ gsap.registerPlugin(useGSAP);
 
 const DURATION = 0.35;
 
-export function ArrowFillSlideButton() {
+export function ArrowFillSlideButton({
+  ease = "power3.inOut",
+}: {
+  ease?: string;
+} = {}) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const aRef = useRef<HTMLSpanElement>(null);
   const bRef = useRef<HTMLSpanElement>(null);
@@ -29,10 +33,10 @@ export function ArrowFillSlideButton() {
       tl.to(a, {
         xPercent: 100,
         duration: DURATION,
-        ease: "power3.inOut",
+        ease,
       }).to(
         b,
-        { xPercent: 0, duration: DURATION, ease: "power3.inOut" },
+        { xPercent: 0, duration: DURATION, ease },
         0,
       );
       tlRef.current = tl;

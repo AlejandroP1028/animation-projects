@@ -37,7 +37,13 @@ function buildWave(p: number, phase: number): string {
   return samples.join(" ");
 }
 
-export function WaterRiseButton({ label }: { label: string }) {
+export function WaterRiseButton({
+  label,
+  ease = "power2.out",
+}: {
+  label: string;
+  ease?: string;
+}) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const fillRef = useRef<SVGPathElement>(null);
   const invertedRef = useRef<HTMLSpanElement>(null);
@@ -72,7 +78,7 @@ export function WaterRiseButton({ label }: { label: string }) {
       riseRef.current = gsap.to(state, {
         p: 1,
         duration: RISE_DURATION,
-        ease: "power2.out",
+        ease,
         paused: true,
         onUpdate: apply,
       });

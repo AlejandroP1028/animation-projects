@@ -10,8 +10,9 @@ gsap.registerPlugin(useGSAP, SplitText);
 
 const DURATION = 0.3;
 const STAGGER = 0.015;
+const COOLDOWN_MS = 250;
 
-export function SplitRiseButton({
+export function DropInButton({
   label,
   ease = "power3.inOut",
 }: {
@@ -22,6 +23,7 @@ export function SplitRiseButton({
   const topRef = useRef<HTMLSpanElement>(null);
   const bottomRef = useRef<HTMLSpanElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const lockedRef = useRef(false);
 
   useGSAP(
     () => {
@@ -36,11 +38,20 @@ export function SplitRiseButton({
         aria: "none",
       });
 
-      gsap.set(splitBottom.chars, { yPercent: 100 });
+      gsap.set(splitBottom.chars, { yPercent: -100 });
 
-      const tl = gsap.timeline({ paused: true });
+      const tl = gsap.timeline({
+        paused: true,
+        onComplete: () => {
+          gsap.set(splitTop.chars, { yPercent: -100 });
+          gsap.set(splitBottom.chars, { yPercent: 0 });
+          setTimeout(() => {
+            lockedRef.current = false;
+          }, COOLDOWN_MS);
+        },
+      });
       tl.to(splitTop.chars, {
-        yPercent: -100,
+        yPercent: 100,
         duration: DURATION,
         ease,
         stagger: STAGGER,
@@ -56,14 +67,17 @@ export function SplitRiseButton({
       );
       tlRef.current = tl;
 
-      const onEnter = () => tl.play();
-      const onLeave = () => tl.reverse();
+      const onEnter = () => {
+        if (lockedRef.current) return;
+        lockedRef.current = true;
+        gsap.set(splitTop.chars, { yPercent: 0 });
+        gsap.set(splitBottom.chars, { yPercent: -100 });
+        tl.restart();
+      };
 
       btn.addEventListener("pointerenter", onEnter);
-      btn.addEventListener("pointerleave", onLeave);
       return () => {
         btn.removeEventListener("pointerenter", onEnter);
-        btn.removeEventListener("pointerleave", onLeave);
         splitTop.revert();
         splitBottom.revert();
         tl.kill();
