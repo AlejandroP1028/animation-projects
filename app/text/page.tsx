@@ -23,7 +23,7 @@ function Lever({
   onChange: (v: number) => void;
 }) {
   return (
-    <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/60">
+    <label className="flex items-center gap-2 text-xs text-foreground/60">
       <span>{label}</span>
       <input
         type="range"
@@ -53,7 +53,7 @@ export default function TextPage() {
   const demos = [
     {
       id: "bar-reveal",
-      label: "bar reveal",
+      label: "Bar reveal",
       node: (
         <BarReveal
           id="bar-reveal"
@@ -66,7 +66,7 @@ export default function TextPage() {
     },
     {
       id: "ascii-reveal",
-      label: "ascii reveal",
+      label: "ASCII reveal",
       node: (
         <AsciiReveal
           id="ascii-reveal"
@@ -79,7 +79,7 @@ export default function TextPage() {
     },
     {
       id: "scramble-reveal",
-      label: "scramble reveal",
+      label: "Scramble reveal",
       node: (
         <ScrambleReveal
           id="scramble-reveal"
@@ -100,29 +100,29 @@ export default function TextPage() {
       demos={demos}
       tabs={
         <div className="flex flex-wrap items-center gap-4">
-          <Lever label="size" value={fontSize} min={8} max={32} onChange={setFontSize} />
+          <Lever label="Size" value={fontSize} min={8} max={32} onChange={setFontSize} />
           <Lever
-            label="lines"
+            label="Lines"
             value={lineCount}
             min={1}
             max={8}
             onChange={setLineCount}
           />
           <Lever
-            label="chars"
+            label="Chars"
             value={charCount}
             min={6}
             max={60}
             onChange={setCharCount}
           />
-          <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/60">
-            <span>text</span>
+          <label className="flex items-center gap-2 text-xs text-foreground/60">
+            <span>Text</span>
             <textarea
               rows={1}
               value={customText}
               onChange={(e) => setCustomText(e.target.value)}
               placeholder="custom (one line per newline)"
-              className={`w-56 rounded border border-foreground/20 bg-transparent px-2 py-1 text-xs normal-case tracking-normal resize-y ${
+              className={`w-56 rounded border border-foreground/20 bg-transparent px-2 py-1 text-xs resize-y ${
                 customActive ? "text-foreground" : "text-foreground/60"
               }`}
             />

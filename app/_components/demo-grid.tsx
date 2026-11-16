@@ -80,7 +80,7 @@ export function DemoGrid({
     <DemoContext.Provider value={ctxValue}>
       <main className="flex flex-1 flex-col font-(family-name:--font-ubuntu-mono)">
         <header className="border-b border-foreground/10 px-6 py-4 pl-16 md:pl-6 flex items-center justify-between gap-4">
-          <h1 className="text-2xl font-bold">{title}</h1>
+          <h1 className="text-2xl">{title}</h1>
           {tabs}
         </header>
         <div className="relative flex-1 overflow-hidden">
@@ -102,7 +102,7 @@ export function DemoGrid({
                   {demo ? (
                     <>
                       {demo.node}
-                      <span className="absolute bottom-2 left-2 flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-foreground/40">
+                      <span className="absolute bottom-2 left-2 flex items-center gap-1.5 text-xs text-foreground/50">
                         {flags?.play && (
                           <button
                             type="button"
@@ -110,7 +110,7 @@ export function DemoGrid({
                             aria-label={`Play ${demo.label}`}
                             className="cursor-pointer text-foreground/40 hover:text-foreground transition-colors"
                           >
-                            <IconPlayerPlayFilled size={10} />
+                            <IconPlayerPlayFilled size={12} />
                           </button>
                         )}
                         {flags?.clear && (
@@ -120,7 +120,7 @@ export function DemoGrid({
                             aria-label={`Clear ${demo.label}`}
                             className="cursor-pointer text-foreground/40 hover:text-foreground transition-colors"
                           >
-                            <IconRefresh size={10} />
+                            <IconRefresh size={12} />
                           </button>
                         )}
                         {demo.label}

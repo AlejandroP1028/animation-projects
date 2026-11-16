@@ -51,24 +51,24 @@ export default function EasingPlaygroundPage() {
   };
 
   const scenes = [
-    { label: "ball L→R", node: <SceneBall {...sceneProps} /> },
-    { label: "vertical drop", node: <SceneDrop {...sceneProps} /> },
-    { label: "point on circle", node: <SceneCircle {...sceneProps} /> },
-    { label: "rotation 360°", node: <SceneRotation {...sceneProps} /> },
-    { label: "scale pulse", node: <SceneScale {...sceneProps} /> },
-    { label: "bar fill", node: <SceneBar {...sceneProps} /> },
-    { label: "fade in", node: <SceneFade {...sceneProps} /> },
-    { label: "hue shift", node: <SceneHue {...sceneProps} /> },
-    { label: "svg path draw", node: <ScenePath {...sceneProps} /> },
-    { label: "counter 0→100", node: <SceneCounter {...sceneProps} /> },
-    { label: "stagger row", node: <SceneStagger {...sceneProps} /> },
-    { label: "pendulum", node: <ScenePendulum {...sceneProps} /> },
+    { label: "Ball L→R", node: <SceneBall {...sceneProps} /> },
+    { label: "Vertical drop", node: <SceneDrop {...sceneProps} /> },
+    { label: "Point on circle", node: <SceneCircle {...sceneProps} /> },
+    { label: "Rotation 360°", node: <SceneRotation {...sceneProps} /> },
+    { label: "Scale pulse", node: <SceneScale {...sceneProps} /> },
+    { label: "Bar fill", node: <SceneBar {...sceneProps} /> },
+    { label: "Fade in", node: <SceneFade {...sceneProps} /> },
+    { label: "Hue shift", node: <SceneHue {...sceneProps} /> },
+    { label: "SVG path draw", node: <ScenePath {...sceneProps} /> },
+    { label: "Counter 0→100", node: <SceneCounter {...sceneProps} /> },
+    { label: "Stagger row", node: <SceneStagger {...sceneProps} /> },
+    { label: "Pendulum", node: <ScenePendulum {...sceneProps} /> },
   ];
 
   return (
     <main className="flex flex-1 flex-col font-(family-name:--font-ubuntu-mono)">
       <header className="border-b border-foreground/10 px-6 py-4 pl-16 md:pl-6">
-        <h1 className="text-2xl font-bold">Easing Playground</h1>
+        <h1 className="text-2xl">Easing Playground</h1>
       </header>
 
       <Controls state={state} setState={setState} ease={ease} />
@@ -91,7 +91,7 @@ export default function EasingPlaygroundPage() {
                 {scene ? (
                   <>
                     {scene.node}
-                    <span className="absolute bottom-2 left-2 text-[10px] uppercase tracking-wider text-foreground/40">
+                    <span className="absolute bottom-2 left-2 text-xs text-foreground/50">
                       {scene.label}
                     </span>
                   </>

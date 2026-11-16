@@ -4,7 +4,7 @@ import { RowCurtainTransition } from "./_components/row-curtain-transition";
 const demos = [
   {
     id: "row-curtain",
-    label: "row curtain",
+    label: "Row curtain",
     node: <RowCurtainTransition />,
   },
 ];

@@ -76,7 +76,7 @@ export function EasePicker({
         type="button"
         onClick={() => setOpen((o) => !o)}
         title={defaultValue ? `default: ${defaultValue}` : undefined}
-        className={`cursor-pointer rounded border px-1.5 py-0.5 text-[10px] uppercase tracking-wider transition-colors ${
+        className={`cursor-pointer rounded border px-1.5 py-0.5 text-[11px] transition-colors ${
           modified
             ? "border-foreground/60 text-foreground"
             : "border-foreground/20 text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
@@ -88,7 +88,7 @@ export function EasePicker({
       {open && (
         <div className="absolute bottom-full right-0 mb-1 z-10 flex gap-2 rounded border border-foreground/20 bg-background p-2 shadow">
           <div className="flex flex-col gap-1">
-            <span className="text-[9px] uppercase tracking-wider text-foreground/50">
+            <span className="text-[11px] text-foreground/50">
               family
             </span>
             <select
@@ -96,7 +96,7 @@ export function EasePicker({
               onChange={(e) =>
                 onChange(formatEase(e.target.value as Family, variant))
               }
-              className="rounded border border-foreground/20 bg-background px-1 py-0.5 text-[10px] cursor-pointer"
+              className="rounded border border-foreground/20 bg-background px-1 py-0.5 text-[11px] cursor-pointer"
             >
               {PICKABLE_FAMILIES.map((f) => (
                 <option key={f} value={f}>
@@ -108,7 +108,7 @@ export function EasePicker({
           </div>
           {showVariant && (
             <div className="flex flex-col gap-1">
-              <span className="text-[9px] uppercase tracking-wider text-foreground/50">
+              <span className="text-[11px] text-foreground/50">
                 variant
               </span>
               <select
@@ -116,7 +116,7 @@ export function EasePicker({
                 onChange={(e) =>
                   onChange(formatEase(family, e.target.value as Variant))
                 }
-                className="rounded border border-foreground/20 bg-background px-1 py-0.5 text-[10px] cursor-pointer"
+                className="rounded border border-foreground/20 bg-background px-1 py-0.5 text-[11px] cursor-pointer"
               >
                 {VARIANTS.map((v) => {
                   const isDefault = defaultHasVariant && v === defaultVariant;

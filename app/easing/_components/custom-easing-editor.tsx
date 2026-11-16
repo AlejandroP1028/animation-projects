@@ -154,7 +154,7 @@ export function CustomEasingEditor({ path, onChange }: Props) {
         />
       </svg>
       <div className="flex flex-1 min-w-[260px] flex-col gap-2">
-        <label className="text-[10px] uppercase tracking-wider text-foreground/50">
+        <label className="text-xs text-foreground/50">
           CustomEase path
         </label>
         <input
@@ -166,7 +166,7 @@ export function CustomEasingEditor({ path, onChange }: Props) {
           }`}
           spellCheck={false}
         />
-        <p className="text-[10px] text-foreground/40">
+        <p className="text-[11px] text-foreground/50">
           Shape: <code>M0,0 C{"{x1}"},{"{y1}"} {"{x2}"},{"{y2}"} 1,1</code>
         </p>
       </div>

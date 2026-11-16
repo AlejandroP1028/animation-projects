@@ -16,7 +16,7 @@ function ExampleFrame({
 }) {
   return (
     <div className="flex flex-col border border-foreground/10 bg-foreground/[0.02]">
-      <div className="border-b border-foreground/10 px-2 py-1 text-[9px] uppercase tracking-wider text-foreground/50">
+      <div className="border-b border-foreground/10 px-2 py-1 text-[11px] text-foreground/50">
         {label}
       </div>
       <div ref={innerRef} className="relative h-28 overflow-hidden">
@@ -35,7 +35,7 @@ function ToastAppear(props: SceneProps) {
     tl.fromTo(r.current, { y: -50, autoAlpha: 0 }, { y: 8, autoAlpha: 1 });
   }, props);
   return (
-    <ExampleFrame label="toast appear" innerRef={ref}>
+    <ExampleFrame label="Toast appear" innerRef={ref}>
       <div className="absolute inset-x-2 top-0">
         <div
           ref={r}
@@ -56,7 +56,7 @@ function ToastDismiss(props: SceneProps) {
     tl.fromTo(r.current, { y: 8, autoAlpha: 1 }, { y: -50, autoAlpha: 0 });
   }, props);
   return (
-    <ExampleFrame label="toast dismiss" innerRef={ref}>
+    <ExampleFrame label="Toast dismiss" innerRef={ref}>
       <div className="absolute inset-x-2 top-0">
         <div
           ref={r}
@@ -79,7 +79,7 @@ function ToastSwap(props: SceneProps) {
     tl.fromTo(bRef.current, { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, 0);
   }, props);
   return (
-    <ExampleFrame label="toast swap" innerRef={ref}>
+    <ExampleFrame label="Toast swap" innerRef={ref}>
       <div className="absolute inset-x-2 top-3">
         <div
           ref={aRef}
@@ -114,7 +114,7 @@ function ModalOpen(props: SceneProps) {
     );
   }, props);
   return (
-    <ExampleFrame label="modal open" innerRef={ref}>
+    <ExampleFrame label="Modal open" innerRef={ref}>
       <div ref={bdRef} className="absolute inset-0 bg-foreground/30" />
       <div className="absolute inset-0 flex items-center justify-center">
         <div
@@ -143,7 +143,7 @@ function ModalClose(props: SceneProps) {
     );
   }, props);
   return (
-    <ExampleFrame label="modal close" innerRef={ref}>
+    <ExampleFrame label="Modal close" innerRef={ref}>
       <div ref={bdRef} className="absolute inset-0 bg-foreground/30" />
       <div className="absolute inset-0 flex items-center justify-center">
         <div
@@ -169,7 +169,7 @@ function ModalMorph(props: SceneProps) {
     );
   }, props);
   return (
-    <ExampleFrame label="modal morph" innerRef={ref}>
+    <ExampleFrame label="Modal morph" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           ref={dlRef}
@@ -189,7 +189,7 @@ function DrawerOpen(props: SceneProps) {
     tl.fromTo(r.current, { xPercent: -100 }, { xPercent: 0 });
   }, props);
   return (
-    <ExampleFrame label="drawer open" innerRef={ref}>
+    <ExampleFrame label="Drawer open" innerRef={ref}>
       <div className="absolute inset-0 bg-foreground/5" />
       <div
         ref={r}
@@ -213,7 +213,7 @@ function DrawerClose(props: SceneProps) {
     tl.fromTo(r.current, { xPercent: 0 }, { xPercent: -100 });
   }, props);
   return (
-    <ExampleFrame label="drawer close" innerRef={ref}>
+    <ExampleFrame label="Drawer close" innerRef={ref}>
       <div className="absolute inset-0 bg-foreground/5" />
       <div
         ref={r}
@@ -239,7 +239,7 @@ function FadeIn(props: SceneProps) {
     tl.fromTo(r.current, { autoAlpha: 0 }, { autoAlpha: 1 });
   }, props);
   return (
-    <ExampleFrame label="fade in" innerRef={ref}>
+    <ExampleFrame label="Fade in" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           ref={r}
@@ -257,7 +257,7 @@ function FadeOut(props: SceneProps) {
     tl.fromTo(r.current, { autoAlpha: 1 }, { autoAlpha: 0 });
   }, props);
   return (
-    <ExampleFrame label="fade out" innerRef={ref}>
+    <ExampleFrame label="Fade out" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           ref={r}
@@ -277,7 +277,7 @@ function FadeCross(props: SceneProps) {
     tl.fromTo(bRef.current, { autoAlpha: 0 }, { autoAlpha: 1 }, 0);
   }, props);
   return (
-    <ExampleFrame label="cross-fade" innerRef={ref}>
+    <ExampleFrame label="Cross-fade" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div ref={aRef} className="absolute h-16 w-24 rounded bg-foreground/80" />
         <div
@@ -298,7 +298,7 @@ function TabSwitch(props: SceneProps) {
     tl.fromTo(ind.current, { xPercent: 0 }, { xPercent: 200 });
   }, props);
   return (
-    <ExampleFrame label="tab switch" innerRef={ref}>
+    <ExampleFrame label="Tab switch" innerRef={ref}>
       <div className="absolute inset-x-3 top-1/2 -translate-y-1/2">
         <div className="grid grid-cols-3 text-center text-[10px] text-foreground/60">
           <span>Home</span>
@@ -325,7 +325,7 @@ function PageSwap(props: SceneProps) {
     tl.fromTo(bRef.current, { xPercent: 100 }, { xPercent: 0 }, 0);
   }, props);
   return (
-    <ExampleFrame label="page swap" innerRef={ref}>
+    <ExampleFrame label="Page swap" innerRef={ref}>
       <div
         ref={aRef}
         className="absolute inset-0 flex items-center justify-center bg-foreground/10 text-xs"
@@ -351,7 +351,7 @@ function Badge(props: SceneProps) {
     tl.fromTo(r.current, { scale: 0 }, { scale: 1 });
   }, props);
   return (
-    <ExampleFrame label="badge pop" innerRef={ref}>
+    <ExampleFrame label="Badge pop" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative">
           <div className="h-10 w-10 rounded-full bg-foreground/15" />
@@ -374,7 +374,7 @@ function ButtonPress(props: SceneProps) {
     tl.fromTo(r.current, { scale: 1 }, { scale: 0.88 });
   }, props);
   return (
-    <ExampleFrame label="button press" innerRef={ref}>
+    <ExampleFrame label="Button press" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           ref={r}
@@ -394,7 +394,7 @@ function ErrorShake(props: SceneProps) {
     tl.fromTo(r.current, { x: -12 }, { x: 12 });
   }, props);
   return (
-    <ExampleFrame label="error shake" innerRef={ref}>
+    <ExampleFrame label="Error shake" innerRef={ref}>
       <div className="absolute inset-x-3 top-1/2 -translate-y-1/2">
         <div
           ref={r}
@@ -414,7 +414,7 @@ function BallDrop(props: SceneProps) {
     tl.fromTo(r.current, { y: -60 }, { y: 0 });
   }, props);
   return (
-    <ExampleFrame label="ball drop" innerRef={ref}>
+    <ExampleFrame label="Ball drop" innerRef={ref}>
       <div className="absolute inset-x-0 bottom-3 flex justify-center">
         <div ref={r} className="h-6 w-6 rounded-full bg-foreground" />
       </div>
@@ -431,7 +431,7 @@ function Spinner(props: SceneProps) {
     tl.fromTo(r.current, { rotation: 0 }, { rotation: 360 });
   }, props);
   return (
-    <ExampleFrame label="spinner" innerRef={ref}>
+    <ExampleFrame label="Spinner" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           ref={r}
@@ -449,7 +449,7 @@ function Refresh(props: SceneProps) {
     tl.fromTo(r.current, { rotation: 0 }, { rotation: 360 });
   }, props);
   return (
-    <ExampleFrame label="refresh icon" innerRef={ref}>
+    <ExampleFrame label="Refresh icon" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div ref={r}>
           <IconRefresh size={28} stroke={1.5} />
@@ -478,7 +478,7 @@ function ProgressBar(props: SceneProps) {
     );
   }, props);
   return (
-    <ExampleFrame label="progress bar" innerRef={ref}>
+    <ExampleFrame label="Progress bar" innerRef={ref}>
       <div className="absolute inset-x-3 top-1/2 -translate-y-1/2">
         <div className="mb-1 flex justify-between text-[10px] text-foreground/60">
           <span>Uploading</span>
@@ -509,7 +509,7 @@ function Counter(props: SceneProps) {
     });
   }, props);
   return (
-    <ExampleFrame label="stat counter" innerRef={ref}>
+    <ExampleFrame label="Stat counter" innerRef={ref}>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span
           ref={r}
@@ -517,8 +517,8 @@ function Counter(props: SceneProps) {
         >
           0
         </span>
-        <span className="text-[9px] uppercase tracking-wider text-foreground/50">
-          followers
+        <span className="text-[11px] text-foreground/50">
+          Followers
         </span>
       </div>
     </ExampleFrame>
@@ -539,7 +539,7 @@ function Typewriter(props: SceneProps) {
     });
   }, props);
   return (
-    <ExampleFrame label="typewriter" innerRef={ref}>
+    <ExampleFrame label="Typewriter" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center px-3">
         <span ref={r} className="font-(family-name:--font-ubuntu-mono) text-sm">
           {" "}
@@ -559,7 +559,7 @@ function Breathing(props: SceneProps) {
     tl.fromTo(r.current, { scale: 1, autoAlpha: 0.6 }, { scale: 1.15, autoAlpha: 1 });
   }, props);
   return (
-    <ExampleFrame label="idle breathing" innerRef={ref}>
+    <ExampleFrame label="Idle breathing" innerRef={ref}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div ref={r} className="h-12 w-12 rounded-full bg-foreground" />
       </div>
@@ -576,7 +576,7 @@ function Parallax(props: SceneProps) {
     tl.fromTo(nearRef.current, { x: 0 }, { x: -100 }, 0);
   }, props);
   return (
-    <ExampleFrame label="parallax pan" innerRef={ref}>
+    <ExampleFrame label="Parallax pan" innerRef={ref}>
       <div ref={farRef} className="absolute top-3 flex gap-6 text-foreground/30">
         <span className="text-2xl">▲</span>
         <span className="text-2xl">▲</span>
@@ -600,7 +600,7 @@ function Accordion(props: SceneProps) {
     tl.fromTo(r.current, { height: 0 }, { height: 60 });
   }, props);
   return (
-    <ExampleFrame label="accordion" innerRef={ref}>
+    <ExampleFrame label="Accordion" innerRef={ref}>
       <div className="absolute inset-x-3 top-3 flex flex-col">
         <div className="rounded-t border border-foreground/20 bg-background px-2 py-1.5 text-[10px] font-semibold">
           Section A
@@ -727,8 +727,8 @@ export function EasingExamples({ family, variant, ...props }: Props) {
       : `${family}.${variant}`;
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-[10px] uppercase tracking-wider text-foreground/50">
-        Examples — typical uses for{" "}
+      <span className="text-xs text-foreground/50">
+        Typical uses for{" "}
         <span className="text-foreground/80">{label}</span>
       </span>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">

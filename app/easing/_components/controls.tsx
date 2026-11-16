@@ -25,7 +25,7 @@ interface Props {
 }
 
 const SELECT_CLASS =
-  "rounded border border-foreground/20 bg-background px-2 py-1 text-sm font-(family-name:--font-ubuntu-mono) cursor-pointer";
+  "rounded-md border border-foreground/20 bg-background px-2 py-1 text-sm font-(family-name:--font-ubuntu-mono) cursor-pointer";
 
 export function Controls({ state, setState, ease }: Props) {
   const showVariant = !VARIANTLESS.includes(state.family);
@@ -40,8 +40,8 @@ export function Controls({ state, setState, ease }: Props) {
         </div>
 
         <div className="flex flex-1 flex-wrap items-center gap-4">
-          <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/60">
-            family
+          <label className="flex items-center gap-2 text-xs text-foreground/60">
+            Family
             <select
               value={state.family}
               onChange={(e) =>
@@ -58,8 +58,8 @@ export function Controls({ state, setState, ease }: Props) {
           </label>
 
           {showVariant && (
-            <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/60">
-              variant
+            <label className="flex items-center gap-2 text-xs text-foreground/60">
+              Variant
               <select
                 value={state.variant}
                 onChange={(e) =>
@@ -80,8 +80,8 @@ export function Controls({ state, setState, ease }: Props) {
           )}
 
           {showSteps && (
-            <label className="flex items-center gap-2 text-xs uppercase tracking-wider text-foreground/60">
-              steps
+            <label className="flex items-center gap-2 text-xs text-foreground/60">
+              Steps
               <input
                 type="number"
                 min={1}
@@ -98,8 +98,8 @@ export function Controls({ state, setState, ease }: Props) {
             </label>
           )}
 
-          <label className="flex flex-1 min-w-[200px] items-center gap-3 text-xs uppercase tracking-wider text-foreground/60">
-            duration
+          <label className="flex flex-1 min-w-[200px] items-center gap-3 text-xs text-foreground/60">
+            Duration
             <input
               type="range"
               min={0.1}
@@ -111,7 +111,7 @@ export function Controls({ state, setState, ease }: Props) {
               }
               className="flex-1 cursor-pointer accent-foreground"
             />
-            <span className="w-12 text-right font-(family-name:--font-ubuntu-mono) text-sm normal-case tracking-normal tabular-nums">
+            <span className="w-12 text-right font-(family-name:--font-ubuntu-mono) text-sm tabular-nums">
               {state.duration.toFixed(2)}s
             </span>
           </label>
@@ -119,7 +119,7 @@ export function Controls({ state, setState, ease }: Props) {
           <button
             type="button"
             onClick={() => setState((s) => ({ ...s, loop: !s.loop }))}
-            className={`flex cursor-pointer items-center gap-2 rounded border px-3 py-1.5 text-xs uppercase tracking-wider transition-colors ${
+            className={`flex cursor-pointer items-center gap-2 rounded-md border px-3 py-1.5 text-xs transition-colors ${
               state.loop
                 ? "border-foreground bg-foreground text-background"
                 : "border-foreground/20 hover:bg-foreground/10"
@@ -132,14 +132,14 @@ export function Controls({ state, setState, ease }: Props) {
             ) : (
               <IconRepeatOff size={14} stroke={1.5} />
             )}
-            loop
+            Loop
           </button>
 
           {state.loop ? (
             <button
               type="button"
               onClick={() => setState((s) => ({ ...s, paused: !s.paused }))}
-              className="flex cursor-pointer items-center gap-2 rounded border border-foreground/20 px-3 py-1.5 text-xs uppercase tracking-wider hover:bg-foreground/10"
+              className="flex cursor-pointer items-center gap-2 rounded-md border border-foreground/20 px-3 py-1.5 text-xs hover:bg-foreground/10"
               aria-label={state.paused ? "Play" : "Pause"}
             >
               {state.paused ? (
@@ -147,7 +147,7 @@ export function Controls({ state, setState, ease }: Props) {
               ) : (
                 <IconPlayerPause size={14} stroke={1.5} />
               )}
-              {state.paused ? "play" : "pause"}
+              {state.paused ? "Play" : "Pause"}
             </button>
           ) : (
             <button
@@ -155,11 +155,11 @@ export function Controls({ state, setState, ease }: Props) {
               onClick={() =>
                 setState((s) => ({ ...s, playToken: s.playToken + 1 }))
               }
-              className="flex cursor-pointer items-center gap-2 rounded border border-foreground/20 px-3 py-1.5 text-xs uppercase tracking-wider hover:bg-foreground/10"
+              className="flex cursor-pointer items-center gap-2 rounded-md border border-foreground/20 px-3 py-1.5 text-xs hover:bg-foreground/10"
               aria-label="Play once"
             >
               <IconPlayerPlay size={14} stroke={1.5} />
-              play once
+              Play once
             </button>
           )}
         </div>

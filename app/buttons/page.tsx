@@ -51,17 +51,17 @@ export default function ButtonsPage() {
   const textDemos = [
     {
       id: "scramble",
-      label: "scramble on hover",
+      label: "Scramble on hover",
       node: <ScrambleButton label="HOVER ME" />,
     },
     {
       id: "ascii-propagate",
-      label: "ascii propagate",
+      label: "ASCII propagate",
       node: <AsciiPropagateButton label="HOVER ME" />,
     },
     {
       id: "split-rise",
-      label: "split rise on hover",
+      label: "Split rise on hover",
       node: (
         <SplitRiseButton
           key={eases["split-rise"]}
@@ -73,7 +73,7 @@ export default function ButtonsPage() {
     },
     {
       id: "semicircle-rise",
-      label: "semicircle rise on hover",
+      label: "Semicircle rise on hover",
       node: (
         <SemicircleRiseButton
           key={eases["semicircle-rise"]}
@@ -85,7 +85,7 @@ export default function ButtonsPage() {
     },
     {
       id: "water-rise",
-      label: "water rise on hover",
+      label: "Water rise on hover",
       node: (
         <WaterRiseButton
           key={eases["water-rise"]}
@@ -97,7 +97,7 @@ export default function ButtonsPage() {
     },
     {
       id: "swap-rise",
-      label: "swap rise on hover",
+      label: "Swap rise on hover",
       node: (
         <SwapRiseButton
           key={eases["swap-rise"]}
@@ -109,7 +109,7 @@ export default function ButtonsPage() {
     },
     {
       id: "swap-fall",
-      label: "swap fall on hover",
+      label: "Swap fall on hover",
       node: (
         <SwapFallButton
           key={eases["swap-fall"]}
@@ -121,7 +121,7 @@ export default function ButtonsPage() {
     },
     {
       id: "drop-in",
-      label: "drop in on hover",
+      label: "Drop in on hover",
       node: (
         <DropInButton
           key={eases["drop-in"]}
@@ -136,7 +136,7 @@ export default function ButtonsPage() {
   const iconDemos = [
     {
       id: "arrow-slide",
-      label: "arrow slide on hover",
+      label: "Arrow slide on hover",
       node: (
         <ArrowSlideButton
           key={eases["arrow-slide"]}
@@ -147,7 +147,7 @@ export default function ButtonsPage() {
     },
     {
       id: "arrow-fill-slide",
-      label: "arrow + bg slide on hover",
+      label: "Arrow + bg slide on hover",
       node: (
         <ArrowFillSlideButton
           key={eases["arrow-fill-slide"]}
@@ -172,7 +172,7 @@ export default function ButtonsPage() {
               key={t.id}
               type="button"
               onClick={() => setTab(t.id)}
-              className={`cursor-pointer rounded px-3 py-1 uppercase tracking-wider transition-colors ${
+              className={`cursor-pointer rounded px-3 py-1 transition-colors ${
                 t.id === tab
                   ? "bg-foreground text-background"
                   : "hover:bg-foreground/10"

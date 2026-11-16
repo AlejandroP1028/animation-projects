@@ -66,7 +66,7 @@ export function Sidebar() {
         <nav className="flex flex-col gap-6">
           {sections.map(({ title, items }) => (
             <div key={title} className="flex flex-col gap-2">
-              <span className="text-xs uppercase tracking-wider text-foreground/40">
+              <span className="text-xs text-foreground/50">
                 {title}
               </span>
               <ul className="flex flex-col gap-1">
